@@ -222,15 +222,23 @@ App({
     
     const systemPrompt = this.buildSystemPromptWithImage(style, !!imageBase64)
     
-    // 豆包 API endpoint (火山引擎) - 使用支持多模态的端点
-    const url = 'https://ark.cn-beijing.volces.com/api/v3/chat/completions'
+    // 豆包 API endpoint (火山引擎) - coding plan
+    const url = 'https://ark.cn-beijing.volces.com/api/coding/v3/chat/completions'
     
     let messages
+    let modelId
     if (imageBase64) {
-      // 多模态消息格式 - 包含图片和文本
+      // 多模态消息格式 - 包含图片和文本，使用vision模型
+      modelId = 'Doubao-Seed-2.0-pro'
       const textContent = originalText 
         ? `请根据这张图片和我的描述生成朋友圈文案：${originalText}`
         : '请根据这张图片生成合适的朋友圈文案'
+      
+      // 检查base64是否已经有data前缀
+      let imageUrl = imageBase64
+      if (!imageBase64.startsWith('data:')) {
+        imageUrl = `data:image/jpeg;base64,${imageBase64}`
+      }
       
       messages = [
         { role: 'system', content: systemPrompt },
@@ -242,14 +250,15 @@ App({
               text: textContent
             },
             {
-              type: 'image',
-              image: imageBase64
+              type: 'image_url',
+              image_url: imageUrl
             }
           ]
         }
       ]
     } else {
-      // 纯文本模式
+      // 纯文本模式，使用文本模型
+      modelId = 'doubao-seed-2.0-code'
       const userPrompt = originalText 
         ? `原始文案/意图：${originalText}\n\n请帮我润色生成`
         : '请帮我生成朋友圈文案'
@@ -265,7 +274,7 @@ App({
         url: url,
         method: 'POST',
         data: {
-          model: 'doubao-vision-lite-241215',
+          model: modelId,
           messages: messages,
           temperature: 0.8
         },
