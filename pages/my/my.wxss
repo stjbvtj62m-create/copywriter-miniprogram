@@ -1,0 +1,108 @@
+
+/* my.wxss */
+.user-card {
+  margin-bottom: 30rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.user-detail {
+  flex: 1;
+}
+
+.nickname {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.quota-info {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.quota-text {
+  color: #1677ff;
+  font-weight: bold;
+}
+
+.menu-list {
+  margin-bottom: 30rpx;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 25rpx 30rpx;
+  margin-bottom: 15rpx;
+}
+
+.menu-icon {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+}
+
+.menu-text {
+  flex: 1;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.arrow {
+  font-size: 32rpx;
+  color: #ccc;
+}
+
+.help-title {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.help-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15rpx;
+}
+
+.help-item:last-child {
+  margin-bottom: 0;
+}
+
+.help-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32rpx;
+  height: 32rpx;
+  background-color: #1677ff;
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 22rpx;
+  margin-right: 15rpx;
+  flex-shrink: 0;
+}
+
+.help-desc {
+  flex: 1;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.version-info {
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}

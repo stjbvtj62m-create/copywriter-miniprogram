@@ -1,0 +1,12 @@
+
+{
+  "envId": "{{envId}}",
+  "functionRoot": "cloudfunctions",
+  "staticRoot": "static",
+  "providers": [
+    {
+      "name": "tcb",
+      "config": "cloudbaserc.json"
+    }
+  ]
+}

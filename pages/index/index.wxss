@@ -1,0 +1,165 @@
+
+/* index.wxss */
+.quota-card {
+  padding: 20rpx 30rpx;
+}
+
+.quota-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quota-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.quota-number {
+  font-size: 48rpx;
+  font-weight: bold;
+  margin: 0 10rpx;
+  color: #1677ff;
+}
+
+.quota-number.text-danger {
+  color: #ff4d4f;
+}
+
+.quota-total {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.input-card .input-title {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 15rpx;
+  font-weight: 500;
+}
+
+.input-area {
+  width: 100%;
+  min-height: 200rpx;
+  background-color: #fafafa;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  line-height: 1.6;
+}
+
+.word-count {
+  text-align: right;
+  margin-top: 10rpx;
+}
+
+.text-danger {
+  color: #ff4d4f;
+}
+
+.style-title {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+  font-weight: 500;
+}
+
+.style-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+}
+
+.style-item {
+  padding: 10rpx 24rpx;
+  border: 2rpx solid #d9d9d9;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  color: #666;
+  background-color: #fafafa;
+  transition: all 0.2s;
+}
+
+.style-item.checked {
+  border-color: #1677ff;
+  background-color: #e6f0ff;
+  color: #1677ff;
+}
+
+.action-area {
+  margin: 30rpx 0;
+}
+
+.generate-btn {
+  width: 100%;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  padding: 25rpx 0;
+  color: #ffffff;
+}
+
+.generate-btn[disabled] {
+  background-color: #ccc !important;
+  color: #fff !important;
+}
+
+.result-title {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+  font-weight: 500;
+}
+
+.result-item {
+  background-color: #fafafa;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  margin-bottom: 15rpx;
+  border: 1rpx solid #f0f0f0;
+  transition: all 0.2s;
+}
+
+.result-item:active {
+  background-color: #e6f0ff;
+  border-color: #1677ff;
+}
+
+.result-item:last-child {
+  margin-bottom: 0;
+}
+
+.result-text {
+  font-size: 30rpx;
+  line-height: 1.7;
+  color: #333;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.result-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15rpx;
+  padding-top: 15rpx;
+  border-top: 1rpx solid #e8e8e8;
+}
+
+.result-style {
+  font-size: 24rpx;
+  color: #1677ff;
+  background-color: #e6f0ff;
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+}
+
+.copy-hint {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.empty-tip {
+  font-size: 28rpx;
+  padding: 100rpx 0;
+}

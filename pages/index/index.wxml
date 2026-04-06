@@ -1,0 +1,81 @@
+
+<!--index.wxml-->
+<view class="container">
+  <!-- 配额信息 -->
+  <view class="quota-card card" wx:if="{{quotaInfo}}">
+    <view class="quota-info">
+      <text class="quota-label">今日剩余次数</text>
+      <text class="quota-number {{remaining <= 3 ? 'text-danger' : 'text-primary'}}">{{remaining}}</text>
+      <text class="quota-total">/{{quotaInfo.dailyLimit}}</text>
+    </view>
+  </view>
+
+  <!-- 文案输入区域 -->
+  <view class="input-card card">
+    <view class="input-title">输入你的原始文案</view>
+    <textarea 
+      class="input-area" 
+      placeholder="请在这里输入你想要润色的文案..." 
+      value="{{originalText}}" 
+      bindinput="onInputChange"
+      maxlength="500"
+      auto-height
+    ></textarea>
+    <view class="word-count">
+      <text class="{{currentLength >= 500 ? 'text-danger' : 'text-muted'}}">{{currentLength}}/500</text>
+    </view>
+  </view>
+
+  <!-- 风格选择区域 -->
+  <view class="style-card card">
+    <view class="style-title">选择润色风格</view>
+    <view class="style-list">
+      <view 
+        class="style-item {{item.checked ? 'checked' : ''}}" 
+        wx:for="{{styles}}" 
+        wx:key="id"
+        bindtap="selectStyle"
+        data-id="{{item.id}}"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 生成按钮 -->
+  <view class="action-area">
+    <button 
+      class="generate-btn btn-primary" 
+      bindtap="generatePolish" 
+      loading="{{generating}}"
+      disabled="{{generating || remaining <= 0 || currentLength === 0}}"
+    >
+      {{generating ? '生成中...' : '开始润色'}}
+    </button>
+  </view>
+
+  <!-- 生成结果区域 -->
+  <view class="result-card card" wx:if="{{results.length > 0}}">
+    <view class="result-title">润色结果（点击复制）</view>
+    <view class="result-list">
+      <view 
+        class="result-item" 
+        wx:for="{{results}}" 
+        wx:key="index"
+        bindtap="copyResult"
+        data-text="{{item.text}}"
+      >
+        <view class="result-text">{{item.text}}</view>
+        <view class="result-meta">
+          <text class="result-style">{{styleNameMap[item.style]}}</text>
+          <text class="copy-hint">点击复制</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空白占位 -->
+  <view class="empty-tip text-center text-muted mt-20" wx:if="{{results.length === 0 && !generating}}">
+    输入文案，选择风格，开始AI润色吧 ✨
+  </view>
+</view>
