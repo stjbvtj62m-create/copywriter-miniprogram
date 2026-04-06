@@ -4,6 +4,102 @@
   padding: 20rpx 30rpx;
 }
 
+/* 图片上传区域 */
+.image-card {
+  padding: 30rpx;
+}
+
+.image-title {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+  font-weight: 500;
+}
+
+.image-upload-area {
+  text-align: center;
+  padding: 40rpx 20rpx;
+  border: 2rpx dashed #d9d9d9;
+  border-radius: 12rpx;
+  background-color: #fafafa;
+}
+
+.upload-btn {
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 40rpx;
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+  color: #666;
+  display: inline-flex;
+  align-items: center;
+  gap: 10rpx;
+  margin-bottom: 15rpx;
+  line-height: 1;
+}
+
+.upload-btn::after {
+  border: none;
+}
+
+.upload-icon {
+  font-size: 32rpx;
+}
+
+.upload-text {
+  font-size: 28rpx;
+}
+
+.upload-hint {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.image-preview {
+  text-align: center;
+}
+
+.preview-img {
+  width: 100%;
+  max-height: 400rpx;
+  border-radius: 8rpx;
+  background-color: #f5f5f5;
+}
+
+.image-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+
+.image-actions button {
+  font-size: 26rpx;
+  padding: 10rpx 24rpx;
+  border-radius: 30rpx;
+  line-height: 1;
+}
+
+.change-btn {
+  background-color: #f0f0f0;
+  color: #666;
+  border: none;
+}
+
+.change-btn::after {
+  border: none;
+}
+
+.delete-btn {
+  background-color: #fff1f0;
+  color: #ff4d4f;
+  border: none;
+}
+
+.delete-btn::after {
+  border: none;
+}
+
 .quota-info {
   display: flex;
   align-items: center;

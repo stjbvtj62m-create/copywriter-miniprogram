@@ -10,12 +10,31 @@
     </view>
   </view>
 
+  <!-- 图片上传区域 -->
+  <view class="image-card card">
+    <view class="image-title">添加图片（可选）</view>
+    <view class="image-upload-area" wx:if="{{!uploadedImage}}">
+      <button class="upload-btn" bindtap="chooseImage">
+        <text class="upload-icon">📷</text>
+        <text class="upload-text">上传图片</text>
+      </button>
+      <view class="upload-hint">AI会识别图片内容，生成更精准的文案</view>
+    </view>
+    <view class="image-preview" wx:if="{{uploadedImage}}">
+      <image class="preview-img" src="{{uploadedImage}}" mode="aspectFit"></image>
+      <view class="image-actions">
+        <button class="change-btn" bindtap="chooseImage">更换图片</button>
+        <button class="delete-btn" bindtap="deleteImage">删除</button>
+      </view>
+    </view>
+  </view>
+
   <!-- 文案输入区域 -->
   <view class="input-card card">
-    <view class="input-title">输入你的原始文案</view>
+    <view class="input-title">输入你的原始文案/地点/意图</view>
     <textarea 
       class="input-area" 
-      placeholder="请在这里输入你想要润色的文案..." 
+      placeholder="请在这里输入你的文案、地点或想法...例如：今天在厦门沙滩拍照，想发个朋友圈" 
       value="{{originalText}}" 
       bindinput="onInputChange"
       maxlength="500"

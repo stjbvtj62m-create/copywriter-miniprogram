@@ -32,7 +32,9 @@ Page({
     generating: false,
     quotaInfo: null,
     remaining: 0,
-    styleNameMap: styleNameMap
+    styleNameMap: styleNameMap,
+    uploadedImage: '', // 上传的图片路径
+    uploadedImageBase64: '' // Base64编码的图片
   },
 
   onLoad: function () {
@@ -84,16 +86,65 @@ Page({
     return selected ? selected.id : 'casual'
   },
 
+  // 选择图片
+  chooseImage: function() {
+    const that = this
+    wx.chooseMedia({
+      count: 1,
+      mediaType: ['image'],
+      sourceType: ['album', 'camera'],
+      success: (res) => {
+        const tempFilePath = res.tempFiles[0].tempFilePath
+        that.setData({
+          uploadedImage: tempFilePath
+        })
+        // 将图片转为Base64
+        that.imageToBase64(tempFilePath)
+      },
+      fail: (err) => {
+        console.error('选择图片失败', err)
+      }
+    })
+  },
+
+  // 图片转Base64
+  imageToBase64: function(filePath) {
+    const that = this
+    util.showLoading('处理图片...')
+    wx.getFileSystemManager().readFile({
+      filePath: filePath,
+      encoding: 'base64',
+      success: (res) => {
+        util.hideLoading()
+        that.setData({
+          uploadedImageBase64: res.data
+        })
+        util.showToast('图片上传成功', 'success')
+      },
+      fail: (err) => {
+        util.hideLoading()
+        console.error('图片转Base64失败', err)
+        util.showToast('图片处理失败，请重试')
+      }
+    })
+  },
+
+  // 删除图片
+  deleteImage: function() {
+    this.setData({
+      uploadedImage: '',
+      uploadedImageBase64: ''
+    })
+  },
+
   // 生成润色文案
   generatePolish: function() {
     const originalText = this.data.originalText.trim()
-    if (!originalText) {
-      util.showToast('请输入需要润色的文案')
-      return
-    }
+    const hasImage = !!this.data.uploadedImageBase64
 
-    if (originalText.length < 2) {
-      util.showToast('文案太短了，输入多一些吧')
+    // 如果没有图片也没有文字，提示输入
+    if (!originalText && !hasImage) {
+      util.showToast('请输入文案或上传图片')
       return
     }
 
@@ -109,7 +160,7 @@ Page({
     })
     util.showLoading('AI生成中...')
 
-    app.polishCopy(originalText, selectedStyle).then(res => {
+    app.polishCopy(originalText, selectedStyle, this.data.uploadedImageBase64).then(res => {
       util.hideLoading()
       this.setData({
         generating: false,

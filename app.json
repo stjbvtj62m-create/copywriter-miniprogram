@@ -27,5 +27,19 @@
     ]
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "位置信息用于文案生成时参考地点信息"
+    },
+    "scope.album": {
+      "desc": "相册权限用于上传要生成文案的图片"
+    },
+    "scope.camera": {
+      "desc": "相机权限用于拍摄要生成文案的图片"
+    }
+  },
+  "requiredPrivateInfos": [
+    "chooseLocation"
+  ]
 }
